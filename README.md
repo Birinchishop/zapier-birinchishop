@@ -26,7 +26,7 @@ Guide: https://birinchishop.uz/api/v1/guide.md
 |---|---|---|---|
 | Trigger (instant) | `new_order` | New Order | REST hook `order.created` (`POST/DELETE /webhooks`) |
 | Trigger (instant) | `order_status_changed` | Order Status Changed | REST hook `order.status_changed`; filters by status / conversion status |
-| Trigger (polling) | `order_updated_polling` | New or Updated Order (Polling) | `GET /orders?updated_since=` — for keys without `webhooks:manage` |
+| Trigger (polling) | `order_updated_polling` | New or Updated Order (Polling) | `GET /orders?updated_since=` — for keys without `webhooks:manage`; **hidden** in the Zap editor for now (see below) |
 | Action | `create_order` | Create Order | `POST /orders` + `Idempotency-Key` |
 | Action | `create_link` | Create Link | `POST /links` |
 | Action | `set_test_order_status` | Set Test Order Status | `POST /sandbox/orders/{id}/status` (test keys only) |
@@ -106,7 +106,7 @@ The API itself also refuses the same phone + offer within 24 hours and more than
 - Samples in the Zap editor (`performList`) are your newest real orders shaped like the webhook event.
 - Options: order statuses, conversion statuses (Lead / Approved / Sale / Rejected) and **Include Test Events**.
 
-**New or Updated Order (Polling)** is the fallback for keys without `webhooks:manage` or accounts that already use 10
+**New or Updated Order (Polling)** is currently hidden (`hidden: true`): the instant triggers cover the same events and a test key cannot produce a live run for it. It is the fallback for keys without `webhooks:manage` or accounts that already use 10
 webhooks. On each poll it reads orders updated in the last 7 days (newest pages first) and emits one item per order and
 status (`id = order_<id>_<status>`), so Zapier's deduplication fires once for a new order and once for each new status.
 Limits: up to ~300 most recently updated orders per poll; if an order returns to a status it already had, it does not fire
@@ -160,7 +160,7 @@ lib/events.js         REST hook subscribe/unsubscribe/perform, event shape, poll
 lib/fields.js, lib/outputFields.js, lib/samples.js, lib/constants.js
 triggers/ creates/ searches/
 test/                 jest + nock
-assets/icon-256.png   logo for the Zapier listing (256×256)
+assets/icon-256.png, icon-512.png   logo for the Zapier listing
 ```
 
 ## Publishing (for the integration owner)

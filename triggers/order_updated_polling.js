@@ -20,6 +20,9 @@ module.exports = {
   noun: 'Order',
   display: {
     label: 'New or Updated Order (Polling)',
+    // Hidden in the public listing: the two instant triggers cover the same events, and a test key
+    // cannot produce a live run for it (test orders are not listed by GET /orders). Still works by key.
+    hidden: true,
     description:
       'Triggers when an order is created or reaches a new status, checked on your Zapier polling interval. Use it only if your API key cannot manage webhooks; otherwise prefer the instant triggers.',
   },
