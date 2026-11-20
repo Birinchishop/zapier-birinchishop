@@ -105,7 +105,7 @@ describe('REST hook perform (signature)', () => {
 
 describe('samples and polling', () => {
   test('new order performList uses the newest orders', async () => {
-    api().get(`${API}/orders`).query({ limit: 3, page: 1 }).reply(200, { data: [order({ id: 3 }), order({ id: 2, status: 'confirmed', conversion_status: 'approved' })], meta: { total_pages: 1 } });
+    api().get(`${API}/orders`).query({ limit: 3, page: 1, include_test: 'true' }).reply(200, { data: [order({ id: 3 }), order({ id: 2, status: 'confirmed', conversion_status: 'approved' })], meta: { total_pages: 1 } });
     const items = await appTester(newOp.performList, bundle());
     expect(items.map((i) => i.id)).toEqual(['order_3_created', 'order_2_created']);
     expect(items[0].type).toBe('order.created');
