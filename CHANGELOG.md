@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.0 — unreleased
+## 0.0.0 — unreleased
 
 First version (not pushed to Zapier yet).
 

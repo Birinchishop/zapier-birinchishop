@@ -1,6 +1,6 @@
 {
   "name": "zapier-birinchishop",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "Zapier integration for the Birinchi Shop Partner API (COD CPA affiliate network, Uzbekistan): instant order triggers with signed webhooks, orders, tracking links, offers and statistics.",
   "main": "index.js",
   "private": true,

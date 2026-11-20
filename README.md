@@ -165,7 +165,7 @@ assets/icon-256.png   logo for the Zapier listing (256×256)
 
 ## Publishing (for the integration owner)
 
-Nothing has been pushed to Zapier yet. Steps:
+Version 0.0.0 is pushed as a private integration (Zapier requires the first version of a new integration to be 0.0.0). Steps:
 
 1. **Account.** Create (or use) a Zapier account whose email is on the `birinchishop.uz` domain — Zapier requires at
    least one admin with an email on the app's domain for a public integration.
@@ -176,13 +176,13 @@ Nothing has been pushed to Zapier yet. Steps:
    npx zapier-platform login            # creates a deploy key in ~/.zapierrc
    npx zapier-platform register "Birinchishop"   # creates the integration, writes .zapierapprc
    npx zapier-platform validate          # now also runs Zapier's online integration checks
-   npx zapier-platform push              # uploads version 0.1.0 (private)
+   npx zapier-platform push              # uploads version 0.0.0 (private)
    ```
 
    Since CLI v19 the command is `zapier-platform` (the old `zapier` binary was removed).
 3. **Private testing.** In the Zapier UI connect a **test key** account and build one Zap per trigger, action and search;
    each Zap must be **on** and have at least one successful run (a review requirement). Use **test keys** for Create
-   Order / Create Link so no real order is created. Invite teammates with `npx zapier-platform users:add <email> 0.1.0`
+   Order / Create Link so no real order is created. Invite teammates with `npx zapier-platform users:add <email> 0.0.0`
    or share the invite link from the developer platform.
 4. **Listing.** In https://developer.zapier.com fill in: name "Birinchishop", description in the form
    "Birinchishop is a…", homepage https://birinchishop.uz, category, logo `assets/icon-256.png`, links to the API docs.
